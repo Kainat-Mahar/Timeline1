@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ body {
+   background-color: #EDF2F7;
+   font-family: 'Noto Sans', sans-serif;
+   color: #4A5568;
+}
+.start-end{
+   background: #d48927;
+   border-radius: 50%;
+   width: 25px;
+   height: 25px;
+   margin: 0 auto;
+}
+.content h1 {
+   font-size: 1.8em;
+   padding-top: 5px;
+   font-weight: bold;
+   text-align: center;
+}
+.content p {
+   font-size: 12px;
+   line-height: 1.6;
+   padding-top: 5px;
+}
+.timeline {
+   position: relative;
+   max-width: 1200px; /* Restrict the width on large screens */
+   margin: 0 auto; /* Center the content */
+   padding: 30px;
+}
+
+ /*to create the actual line in the center*/
+ .timeline::after {
+   content: '';
+   position: absolute;
+   width: 6px;
+   background-color: silver;
+   top: 0;
+   bottom: 0;
+   left: 50%;
+   margin-left: -3px;
+   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+ .container {
+   position: relative;
+   width: 50%;
+   min-height: 120px;
+}
+.container-left {
+   left: 0;
+   padding-right: 70px;
+}
+.container-right {
+   left: 50%;
+   padding-left: 70px;
+}
+ .content {
+   padding: 30px;
+   background-color: white;
+   position: relative;
+   border-radius: 6px;
+   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+ /*to ad arrow marks */
+ .container .content::before {
+   content: " ";
+   height: 0;
+   position: absolute;
+   top: 20px;
+   width: 0;
+   z-index: 1;
+   border: medium solid silver;
+}
+.container-left .content::before {
+   right: -10px;
+   border-width: 10px 0 10px 10px;
+   border-color: transparent transparent transparent silver;
+}
+.container-right .content::before {
+   left: -10px;
+   border-width: 10px 10px 10px 0;
+   border-color: transparent silver transparent transparent;
+}
+ .content img{
+     height: 100px;
+     width: 100%;
+ }
+
+ /* The circles on the timeline */
+.container::after {
+   content: '';
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   right: -13px;
+   background: rgb(85, 15, 61);
+   top: 15px;
+   border-radius: 50%;
+   z-index: 1;
+ }
+ /* Fix the circle for containers on the right side */
+.container-right::after {
+   left: -13px;
+ }
+ @media screen and (max-width: 767px) {
+    /* Add styles to change the behaviour for screens smaller than 767px width */
+    .timeline::after {
+        left: 65px;
+     }
+     
+     .container {
+        width: 100%;
+        padding-left: 100px;
+        padding-right: 0px;
+        margin-top: 30px;
+     }
+     .container-right {
+        left: 0%;
+     }
+     .container-left {
+        text-align: left;
+     }
+     .container:first-of-type {
+        margin-top: 0px;
+     }
+     .container-left::after,.container-right::after {
+      left: 25px;
+     }
+     .container-left .content::before {
+        left: -10px;
+        right: auto;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+     }
+     .container img{
+         width: 100%;
+     } }
+
+     @media screen and (max-width: 480px) {
+      .start-end{
+         margin-left: 52px;
+      }
+        .container {
+            padding-left: 0px;
+            padding-top: 105px;
+            z-index: 3;
+        }
+        .container .content::before {
+            left: 15px;
+            top: -10px;
+            border: medium solid white;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent white transparent;
+         }
+     }
+
